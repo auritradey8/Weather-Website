@@ -1,0 +1,45 @@
+async function fetchData() {
+    const url = 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Durgapur';
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'a173513e32msh17726ed826d53c8p179137jsnb02f328154f6',
+            'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+        }
+    };
+    
+    try {
+        const response = await fetch(url, options);
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
+        const result = await response.json();
+        const {
+            cloud_pct,
+            temp,
+            feels_like,
+            humidity,
+            min_temp,
+            max_temp,
+            wind_speed,
+            wind_degrees,
+            sunrise,
+            sunset
+        } = result;
+
+        document.getElementById('cloud_pct').innerHTML = `Cloud Percentage: ${cloud_pct}%`;
+        document.getElementById('temp').innerHTML = `Temperature: ${temp}°C`;
+        document.getElementById('feels_like').innerHTML = `Feels Like: ${feels_like}°C`;
+        document.getElementById('humidity').innerHTML = `Humidity: ${humidity}%`;
+        document.getElementById('min_temp').innerHTML = `Min Temperature: ${min_temp}°C`;
+        document.getElementById('max_temp').innerHTML = `Max Temperature: ${max_temp}°C`;
+        document.getElementById('wind_speed').innerHTML = `Wind Speed: ${wind_speed} m/s`;
+        document.getElementById('wind_degrees').innerHTML = `Wind Degrees: ${wind_degrees}°`;
+        document.getElementById('sunrise').innerHTML = `Sunrise: ${sunrise}`;
+        document.getElementById('sunset').innerHTML = `Sunset: ${sunset}`;
+    } catch (error) {
+        console.error('Fetch error:', error.message);
+    }
+}
+
+fetchData();

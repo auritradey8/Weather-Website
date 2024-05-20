@@ -1,0 +1,15 @@
+body {
+    background-image: url('./images/main-bg.jpg');
+    background-size: cover; /* Adjusts the background image size to cover the entire element */
+    background-position: center; /* Centers the background image */
+}
+#heading{
+    color: aliceblue;
+    
+}
+#box{
+    
+        background-color: rgba(255, 255, 255, 0.8); /* Adjust the last value (alpha) to change opacity */
+    
+    
+}
